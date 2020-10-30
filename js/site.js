@@ -99,8 +99,6 @@ $(document).ready(function (){
 
     // Setup the twitch stream
     new Twitch.Embed("twitch-embed", {
-        width: 950,
-        height: 480,
         channel: "caffeinejunkiex"
     });
 });
