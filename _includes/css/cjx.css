@@ -1,0 +1,123 @@
+/* ----- flying in space ----- */
+
+#flyingspace {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+/* ----- twitch stream ----- */
+
+#twitch-embed {
+    width: 950px;
+    height: 480px;
+}
+
+
+/* ----- pictures ----- */
+.picture {
+    margin: 10px;
+    width: 270px;
+    float: right;
+    border: 1px white solid;
+    padding: 10px;
+    text-align: center;
+    font-size: 80%;
+    border-radius: 10px;
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.15)
+}
+.picture-right {
+    float: right;
+}
+
+
+/* ----- buttons ----- */
+
+.button-watch {
+    -moz-box-shadow: inset 0px 1px 0px 0px #cf866c;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #cf866c;
+    box-shadow: inset 0px 1px 0px 0px #cf866c;
+    background-color: #D3002A;
+    -webkit-border-top-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-left-radius: 3px;
+    text-indent: 0;
+    border: 1px solid #942911;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    height: 50px;
+    line-height: 50px;
+    width: 200px;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 0px 1px 0px #854629;
+}
+
+.button-watch:hover {
+    background-color: #bc3315;
+}
+
+.button-watch:active {
+    position: relative;
+    top: 1px;
+}
+
+.button-donate {
+    -moz-box-shadow: inset 0px 1px 0px 0px #82cde0;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #82cde0;
+    box-shadow: inset 0px 1px 0px 0px #82cde0;
+    background-color: #26c4eb;
+    -webkit-border-top-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-left-radius: 3px;
+    text-indent: 0;
+    border: 1px solid #0a88a8;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    height: 50px;
+    line-height: 50px;
+    width: 200px;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 0px 1px 0px #146275;
+}
+
+.button-donate:hover {
+    background-color: #229ebd;
+}
+
+.button-donate:active {
+    position: relative;
+    top: 1px;
+}

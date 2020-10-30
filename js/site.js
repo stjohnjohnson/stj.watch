@@ -89,7 +89,18 @@ $(document).ready(function (){
             	$('html,body').animate({scrollTop: targetHight - 170}, 800, "easeInOutExpo");
             });
         }
-	});
+    });
+    
+    // Countdown to November 7th @ 9:30AM PT
+    $('div#countdown').countdown(1604770200000)
+        .on('update.countdown', function (event) {
+            $(this).html(event.strftime('<h4 class="text-white">Starting in %-D day%!D %-H hour%!H %-M minute%!M %-S second%!S</h4>'));
+        });
 
+    // Setup the twitch stream
+    new Twitch.Embed("twitch-embed", {
+        width: 950,
+        height: 480,
+        channel: "caffeinejunkiex"
+    });
 });
-

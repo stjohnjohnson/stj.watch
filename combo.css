@@ -3,3 +3,5 @@
 {% include css/base.css %}
 {% include css/skeleton.css %}
 {% include css/main.css %}
+{% include css/cjx.css %}
+{% include css/font-awesome.css %}
