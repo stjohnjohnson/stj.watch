@@ -10,14 +10,6 @@
 }
 
 
-/* ----- twitch stream ----- */
-
-#twitch-embed {
-    width: 950px;
-    height: 480px;
-}
-
-
 /* ----- pictures ----- */
 .picture {
     margin: 10px;
