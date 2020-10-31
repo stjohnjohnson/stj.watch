@@ -25,10 +25,10 @@ colors:
   black:     '#111111'
   white:     '#f8f8f8'
   blue:      '#49a7e9'
-  green:     '#9bcf2f'
+  green:     '#3daa27'
   red:       '#D3002A'
-  purple:    '#c869bf'
-  orange:    '#fab125'
+  purple:    '#a900b2'
+  orange:    '#bc740f'
   turquoise: '#0fbfcf'
 
 kramdown:
