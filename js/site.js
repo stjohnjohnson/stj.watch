@@ -95,10 +95,16 @@ $(document).ready(function (){
     $('div#countdown').countdown(1604770200000)
         .on('update.countdown', function (event) {
             $(this).html(event.strftime('<h4 class="text-white">Starting in %-D day%!D %-H hour%!H %-M minute%!M %-S second%!S</h4>'));
-        });
+        })
+        .on('finish.countdown', function (event) {
+            $(this).html('');
 
-    // Setup the twitch stream
-    new Twitch.Embed("twitch-embed", {
-        channel: "caffeinejunkiex"
-    });
+            // Show the twitch stream
+            new Twitch.Embed("twitch-embed", {
+                channel: "caffeinejunkiex",
+                layout: "video"
+            });
+
+            $(".twitch-window").show();
+        });
 });
