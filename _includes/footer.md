@@ -1,8 +1,7 @@
 
-
-Design by Tim O'Brien [t413.com](http://t413.com/)
+Huge thanks to
+[@blackhawkpanda](https://www.twitch.tv/blackhawkpanda)
+[@aprilyoufools](https://www.twitch.tv/aprilyoufools)
+[@slikshooz](https://www.twitch.tv/slikshooz)
 &mdash;
-[SinglePaged Jekyll theme](https://github.com/t413/SinglePaged)
-&mdash;
-this site is [open source]({{ site.source_link }})
-
+Design by [SinglePaged Jekyll theme](https://github.com/t413/SinglePaged)
