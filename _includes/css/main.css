@@ -61,7 +61,7 @@ img {
 hr {
   margin:60px auto;
   width:50%;
-  border-color: {{ site.colors.black }};
+  border-color: {{ site.colors.white }};
 }
 
 .container { word-wrap: break-word; }
