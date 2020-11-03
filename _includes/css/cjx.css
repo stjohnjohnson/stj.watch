@@ -129,10 +129,13 @@
     display: none;
 }
 
+.circle-img-2x {
+    width: 50%;
+}
 .circle-img img {
     width: 300px;
     height: 300px;
-    padding: 15px;
+    padding: 1em;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -140,12 +143,13 @@
 .circle-img em {
     display: block;
     font-size: 75%;
-    line-height: 0.5em;
+    line-height: 1em;
+    padding: 0 10px;
 }
 
 @media only screen and (max-width: 767px) {
     .circle-img img {
-        width: 225px;
-        height: 225px;
+        width: 175px;
+        height: 175px;
     }
 }
