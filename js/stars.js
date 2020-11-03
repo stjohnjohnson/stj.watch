@@ -20,8 +20,6 @@ generate();
 resize();
 step();
 
-window.onresize = resize;
-
 function generate() {
     for (let i = 0; i < STAR_COUNT; i++) {
         stars.push({
