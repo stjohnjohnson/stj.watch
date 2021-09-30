@@ -12,9 +12,11 @@ timezone: null
 lsi: false
 markdown: kramdown
 
+### target values
+goal: $5,000
 
 ### content configuration ###
-title:       "CaffeineJunkieX's 24-hour Charity Stream for Extra Life - November 7th"
+title:       "CaffeineJunkieX's 24-hour Charity Stream for Extra Life - November 6th"
 keywords:    "twitch, extra-life, charity, ucsf benioff, marathon"
 description: "24-hour Charity Gaming Stream to raise money for UCSF Benioff Children's Hospital hosted by St. John Johnson (CaffeineJunkieX)"
 source_link: "https://github.com/stjohnjohnson/cjx.watch"
