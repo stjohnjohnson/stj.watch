@@ -1,5 +1,14 @@
 # CaffeineJunkieX's 24-Hour Stream Page
 
+## Local Development
+
+```
+$ bundle update
+$ bundle install
+$ bundle exec jekyll serve
+$ open http://0.0.0.0:4000/
+```
+
 ## Sources
 
  - [SinglePaged Jekyll theme](https://github.com/t413/SinglePaged)
