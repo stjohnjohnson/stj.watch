@@ -153,3 +153,41 @@
         height: 175px;
     }
 }
+
+/* ----- donation ----- */
+
+#donation-bar {
+    margin-bottom: 20px;
+}
+#donation-bar.ui-progressbar {
+    background-color: #F7F7F7;
+    background-image: linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+    background-repeat: repeat-x;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    height: 40px;
+    overflow: hidden;
+}
+#donation-bar .ui-progressbar-value {
+    -moz-box-sizing: border-box;
+    background-color: #62C462;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 45px 45px;
+    height: 45px;
+    background-repeat: repeat-x;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+    color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+#donation-bar .progress-value {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-family: 'Raleway';
+    font-size: 24px;
+    padding: 5px;
+    color: black;
+}

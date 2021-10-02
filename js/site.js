@@ -26,18 +26,18 @@ $.extend($.easing,
         navItems = this;
 
         //attatch click listeners
-    	navItems.on('click', function(event){
-    		event.preventDefault();
+        navItems.on('click', function(event){
+            event.preventDefault();
             var navID = $(this).attr("href").substring(1);
             disableScrollFn = true;
             activateNav(navID);
             populateDestinations(); //recalculate these!
-        	$('html,body').animate({scrollTop: sections[navID] - settings.scrollToOffset},
+            $('html,body').animate({scrollTop: sections[navID] - settings.scrollToOffset},
                 settings.scrollSpeed, "easeInOutExpo", function(){
                     disableScrollFn = false;
                 }
             );
-    	});
+        });
 
         //populate lookup of clicable elements and destination sections
         populateDestinations(); //should also be run on browser resize, btw
@@ -74,19 +74,19 @@ $(document).ready(function (){
 
     $('nav li a').navScroller();
 
-    //section divider icon click gently scrolls to reveal the section
-	$(".sectiondivider").on('click', function(event) {
-    	$('html,body').animate({scrollTop: $(event.target.parentNode).offset().top - 50}, 400, "linear");
-	});
+    // section divider icon click gently scrolls to reveal the section
+    $(".sectiondivider").on('click', function(event) {
+        $('html,body').animate({scrollTop: $(event.target.parentNode).offset().top - 50}, 400, "linear");
+    });
 
-    //links going to other sections nicely scroll
-	$(".container a").each(function(){
+    // links going to other sections nicely scroll
+    $(".container a").each(function(){
         if ($(this).attr("href").charAt(0) == '#'){
             $(this).on('click', function(event) {
-        		event.preventDefault();
+                event.preventDefault();
                 var target = $(event.target).closest("a");
                 var targetHight =  $(target.attr("href")).offset().top
-            	$('html,body').animate({scrollTop: targetHight - 170}, 800, "easeInOutExpo");
+                $('html,body').animate({scrollTop: targetHight - 170}, 800, "easeInOutExpo");
             });
         }
     });
@@ -107,4 +107,7 @@ $(document).ready(function (){
 
             $(".twitch-window").show();
         });
+
+    // load donation bar
+    $('div#donation-bar').donateGoal(448498);
 });
