@@ -1,4 +1,4 @@
-# CaffeineJunkieX's 24-Hour Stream Page
+# St. John's 24-Hour Charity Stream Event Page
 
 ## Local Development
 
