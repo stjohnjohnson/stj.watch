@@ -101,7 +101,7 @@ $(document).ready(function (){
 
             // Show the twitch stream
             new Twitch.Embed("twitch-embed", {
-                channel: "caffeinejunkiex",
+                channel: "stjohnjohnson",
                 layout: "video"
             });
 
