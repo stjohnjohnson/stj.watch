@@ -1,5 +1,13 @@
 /* ----- flying in space ----- */
 
+#intro {
+    background: url(img/stars.png) no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-color: #3C3443;
+}
 #flyingspace {
     position: fixed;
     left: 0;
