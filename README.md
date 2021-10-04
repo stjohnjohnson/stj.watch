@@ -1,5 +1,9 @@
 # St. John's 24-Hour Charity Stream Event Page
 
+## Colors
+
+```#1AC1DD```
+
 ## Local Development
 
 ```
