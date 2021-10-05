@@ -27,16 +27,29 @@
 #ucsf {
     float: right;
     position: relative;
-    top: -29px;
+    top: -1em;
     width: 200px;
-    height: 160px;
+    max-width: 30%!important;
 }
 #ucsf-spacer {
     float: left;
     position: relative;
-    top: -29px;
+    top: -1em;
     width: 200px;
-    height: 160px;
+    aspect-ratio: 1.4;
+    max-width: 30%!important;
+}
+
+/* ----- countdown ----- */
+
+#countdown h4 {
+    line-height: normal;
+}
+
+@media only screen and (max-width: 767px) {
+    #countdown h4 {
+        clear: both;
+    }
 }
 
 /* ----- pictures ----- */
@@ -52,6 +65,7 @@
     font-style: italic;
     background-color: rgba(0, 0, 0, 0.15)
 }
+
 .picture-right {
     float: right;
 }
@@ -138,9 +152,12 @@
     margin-bottom: 15em;
 }
 
+/* ----- icons ----- */
+
 .circle-img-2x {
     width: 50%;
 }
+
 .circle-img img {
     width: 300px;
     height: 300px;
@@ -171,6 +188,7 @@
     display: flex;
     align-items: center;
 }
+
 #donation-bar .ui-progressbar {
     background-color: #F7F7F7;
     background-image: linear-gradient(to bottom, #F5F5F5, #F9F9F9);
@@ -182,6 +200,7 @@
     overflow: hidden;
     flex: auto;
 }
+
 #donation-bar .ui-progressbar-value {
     -moz-box-sizing: border-box;
     background-color: #62C462;
@@ -195,6 +214,7 @@
     text-align: center;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
+
 #donation-bar .progress-value {
     font-family: "Raleway", "HelveticaNeue-Light", Arial, sans-serif;
     font-size: 25px;
@@ -203,6 +223,7 @@
     /* padding-left: 10px; */
     color: white;
 }
+
 #donation-bar .progress-perc {
     position: absolute;
     font-family: "Raleway", "HelveticaNeue-Light", Arial, sans-serif;
@@ -210,6 +231,7 @@
     padding: 7px;
     color: white;
 }
+
 #donation-button {
     padding-left: 10px;
 }
