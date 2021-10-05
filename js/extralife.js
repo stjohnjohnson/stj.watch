@@ -8,8 +8,9 @@
     });
     $.fn.donateGoal = function (participantID) {
 
-        var progressBar = this,
-            progressValue = progressBar.children(".progress-value"),
+        var progressBar = this.find(".progress-bar"),
+            progressValue = this.find(".progress-value"),
+            progressPerc = this.find(".progress-perc"),
             donationGoal = 0,
             donationValue = 0,
             donationPercent = donationValue / donationGoal;
@@ -30,7 +31,8 @@
                     donationGoal = res.fundraisingGoal;
                     donationPercent = Math.round(donationValue / donationGoal * 100);
 
-                    progressValue.text(formatter.format(donationValue) + " (" + donationPercent + "%)");
+                    progressValue.text(formatter.format(donationValue) + " raised");
+                    progressPerc.text(donationPercent + "%");
                     progressBar.progressbar("value", Math.min(donationPercent, 100));
                 },
                 error: function (res) {
