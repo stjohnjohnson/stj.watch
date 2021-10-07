@@ -111,12 +111,12 @@
     -webkit-box-shadow: inset 0px 1px 0px 0px #6cdd6c;
     box-shadow: inset 0px 1px 0px 0px #6cdd6c;
     background-color: #62C462;
-    border: 1px solid #478f47;
+    border: 1px solid #4b944b;
     text-shadow: 0px 1px 0px #478f47;
 }
 
 .button-donate.green:hover {
-    background-color: #478f47;
+    background-color: #56aa56;
 }
 
 .button-donate.long {
@@ -187,6 +187,8 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 #donation-bar .ui-progressbar {
@@ -199,6 +201,7 @@
     height: 40px;
     overflow: hidden;
     flex: auto;
+    min-width: 250px;
 }
 
 #donation-bar .ui-progressbar-value {
@@ -219,8 +222,7 @@
     font-family: "Raleway", "HelveticaNeue-Light", Arial, sans-serif;
     font-size: 25px;
     font-weight: bold;
-    padding-right: 10px;
-    /* padding-left: 10px; */
+    padding: 10px;
     color: white;
 }
 
@@ -228,12 +230,12 @@
     position: absolute;
     font-family: "Raleway", "HelveticaNeue-Light", Arial, sans-serif;
     font-size: 25px;
-    padding: 7px;
+    padding: 10px;
     color: white;
 }
 
 #donation-button {
-    padding-left: 10px;
+    padding: 10px;
 }
 
 #donation-box {
