@@ -74,6 +74,10 @@
     }
 }
 
+#raised-top {
+    font-style: italic;
+}
+
 /* ----- pictures ----- */
 .picture {
     margin: 10px;

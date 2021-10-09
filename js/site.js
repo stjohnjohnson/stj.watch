@@ -110,4 +110,5 @@ $(document).ready(function (){
 
     // load donation bar
     $('div#donation-bar').donateGoal(448498);
+    $('div#raised-top').currentRaised(448498);
 });
