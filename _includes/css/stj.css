@@ -40,6 +40,28 @@
     max-width: 30%!important;
 }
 
+/* ----- raffle ----- */
+
+#nfts {
+    width: 75%;
+    aspect-ratio: 1.25;
+}
+
+#nft-instruction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#nft-instruction > div {
+    padding: 0 10px;
+}
+
+#nft-instruction i {
+    font-size: 100px;
+}
+
 /* ----- countdown ----- */
 
 #countdown h4 {
@@ -50,6 +72,10 @@
     #countdown h4 {
         clear: both;
     }
+}
+
+#raised-top {
+    font-style: italic;
 }
 
 /* ----- pictures ----- */
@@ -117,6 +143,19 @@
 
 .button-donate.green:hover {
     background-color: #56aa56;
+}
+
+.button-donate.purple {
+    -moz-box-shadow: inset 0px 1px 0px 0px #856cdd;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #856cdd;
+    box-shadow: inset 0px 1px 0px 0px #856cdd;
+    background-color: #925cf7;
+    border: 1px solid #4b5094;
+    text-shadow: 0px 1px 0px #474c8f;
+}
+
+.button-donate.purple:hover {
+    background-color: #794acf;
 }
 
 .button-donate.long {
