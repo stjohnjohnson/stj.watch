@@ -1,6 +1,6 @@
 /* ----- flying in space ----- */
 
-#intro {
+#what {
     background: url(img/stars.png) no-repeat center center fixed;
     background-size: cover;
     -webkit-background-size: cover;
@@ -9,7 +9,7 @@
     background-color: #3C3443;
 }
 
-#intro p {
+#what p {
     margin: 0;
 }
 

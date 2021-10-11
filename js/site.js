@@ -32,8 +32,8 @@ $.extend($.easing,
             disableScrollFn = true;
             activateNav(navID);
             populateDestinations(); //recalculate these!
-            $('html,body').animate({scrollTop: sections[navID] - settings.scrollToOffset},
-                settings.scrollSpeed, "easeInOutExpo", function(){
+            $('html,body').animate({scrollTop: sections[navID] - settings.scrollToOffset + 5},
+                settings.scrollSpeed, "easeInOutExpo", function() {
                     disableScrollFn = false;
                 }
             );
@@ -47,11 +47,14 @@ $.extend($.easing,
             if (disableScrollFn) { return; }
             var page_height = $(window).height();
             var pos = $(this).scrollTop();
+            var selectedNav = 0;
             for (i in sections) {
                 if ((pos + settings.scrollToOffset >= sections[i]) && sections[i] < pos + page_height){
-                    activateNav(i);
+                    selectedNav = i;
                 }
             }
+
+            activateNav(selectedNav);
         });
     };
 
@@ -66,6 +69,8 @@ $.extend($.easing,
     function activateNav(navID) {
         for (nav in navs) { $(navs[nav]).removeClass('active'); }
         $(navs[navID]).addClass('active');
+        history.replaceState(null, null, '#' + navID);
+
     }
 })( jQuery );
 
