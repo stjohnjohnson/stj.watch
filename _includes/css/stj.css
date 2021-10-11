@@ -152,6 +152,7 @@
     background-color: #925cf7;
     border: 1px solid #4b5094;
     text-shadow: 0px 1px 0px #474c8f;
+    width: 225px;
 }
 
 .button-donate.purple:hover {
