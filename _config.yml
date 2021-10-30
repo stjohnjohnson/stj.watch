@@ -37,3 +37,10 @@ colors:
 kramdown:
   auto_ids:  false
 
+collections:
+  raffle:
+    output: true
+    permalink: /raffle/:name
+  redirect:
+    output: true
+    permalink: /:name
