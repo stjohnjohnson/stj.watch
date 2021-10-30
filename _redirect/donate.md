@@ -1,4 +1,4 @@
 ---
-target: https://donate.stj.me
+target: https://donate.stj.watch
 layout: redirect
 ---

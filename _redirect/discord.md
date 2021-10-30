@@ -1,4 +1,4 @@
 ---
-target: https://discord.stj.me
+target: https://discord.stj.watch
 layout: redirect
 ---
