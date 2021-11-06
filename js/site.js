@@ -97,7 +97,7 @@ $(document).ready(function (){
     });
 
     // Countdown to November 6th @ 9:30AM PT 2021
-    $('div#countdown').countdown(1636219800000)
+    $('div#countdown').countdown(1636216200000)
         .on('update.countdown', function (event) {
             $(this).html(event.strftime('<h4 class="text-white">Starting in %-D day%!D %-H hour%!H %-M minute%!M %-S second%!S</h4>'));
         })
