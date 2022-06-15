@@ -96,8 +96,8 @@ $(document).ready(function (){
         }
     });
 
-    // Countdown to November 6th @ 9:30AM PT 2021
-    $('div#countdown').countdown(1636216200000)
+    // Countdown to November 5th @ 9:30AM PT 2022
+    $('div#countdown').countdown(1667665800000)
         .on('update.countdown', function (event) {
             $(this).html(event.strftime('<h4 class="text-white">Starting in %-D day%!D %-H hour%!H %-M minute%!M %-S second%!S</h4>'));
         })
@@ -114,6 +114,6 @@ $(document).ready(function (){
         });
 
     // load donation bar
-    $('div#donation-bar').donateGoal(448498);
-    $('div#raised-top').currentRaised(448498);
+    $('div#donation-bar').donateGoal(480323);
+    $('div#raised-top').currentRaised(480323);
 });
