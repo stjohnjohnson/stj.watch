@@ -4,7 +4,7 @@
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
-        minimumFractionDigits: 0
+        trailingZeroDisplay: 'stripIfInteger'
     });
     $.fn.donateGoal = function (participantID) {
 
