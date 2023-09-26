@@ -16,7 +16,7 @@ markdown: kramdown
 goal: $10,000
 
 ### content configuration ###
-title:       "St. John's 24-hour Charity Stream Event (11/5/22)"
+title:       "St. John's 24-hour Charity Stream Event (11/4/23)"
 keywords:    "twitch, extra-life, charity, ucsf benioff, marathon"
 description: "24-hour Charity Stream Event to raise money for UCSF Benioff Children's Hospital hosted by St. John Johnson"
 source_link: "https://github.com/stjohnjohnson/stj.watch"
