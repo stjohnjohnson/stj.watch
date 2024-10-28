@@ -1,4 +1,4 @@
 ---
-target: /
+target: /extralife
 layout: redirect
 ---
