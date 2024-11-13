@@ -97,20 +97,23 @@ $(document).ready(function (){
     });
 
     // Countdown to November 2nd @ 9:30AM PT 2024
-    $('div#countdown').countdown(1730565000000)
+    $('div#countdown').countdown(1730565000000, {elapse: true})
         .on('update.countdown', function (event) {
-            $(this).html(event.strftime('<h4 class="text-white">Starting in %-D day%!D %-H hour%!H %-M minute%!M %-S second%!S</h4>'));
-        })
-        .on('finish.countdown', function (event) {
-            $(this).html('');
+            if (event.elapsed) {
+                if (event.offset.totalHours < 36) {
+                    new Twitch.Embed("twitch-embed", {
+                        channel: "stjohnjohnson",
+                        layout: "video"
+                    });
 
-            // Show the twitch stream
-            new Twitch.Embed("twitch-embed", {
-                channel: "stjohnjohnson",
-                layout: "video"
-            });
-
-            $(".twitch-window").show();
+                    $(".twitch-window").show();
+                } else {
+                    $(this).html('');
+                    $(".twitch-window").hide();
+                }
+              } else {
+                $(this).html(event.strftime('<h4 class="text-white">Starting in %-D day%!D %-H hour%!H %-M minute%!M %-S second%!S</h4>'));
+              }
         });
 
     // load donation bar
