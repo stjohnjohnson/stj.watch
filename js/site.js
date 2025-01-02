@@ -96,8 +96,8 @@ $(document).ready(function (){
         }
     });
 
-    // Countdown to November 2nd @ 9:30AM PT 2024
-    $('div#countdown').countdown(1730565000000, {elapse: true})
+    // Countdown to November 8th @ 9:30AM PT 2025
+    $('div#countdown').countdown(1762623000000, {elapse: true})
         .on('update.countdown', function (event) {
             if (event.elapsed) {
                 if (event.offset.totalHours < 36) {
@@ -117,6 +117,6 @@ $(document).ready(function (){
         });
 
     // load donation bar
-    $('div#donation-bar').donateGoal(532048);
-    $('div#raised-top').currentRaised(532048);
+    $('div#donation-bar').donateGoal(548692);
+    $('div#raised-top').currentRaised(548692);
 });
