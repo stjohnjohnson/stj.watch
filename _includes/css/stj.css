@@ -283,3 +283,37 @@
     display: flex;
     align-items: stretch;
 }
+
+/* ----- fundraising chart ----- */
+.fundraising-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    height: 200px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.fundraising-chart .bar {
+    flex: 1;
+    position: relative;
+    background-color: #1AC1DD;
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+}
+
+.fundraising-chart .amount {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+}
+
+.fundraising-chart .year {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+}
