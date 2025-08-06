@@ -48,7 +48,7 @@ $.extend($.easing,
             var page_height = $(window).height();
             var pos = $(this).scrollTop();
             var selectedNav = 0;
-            for (i in sections) {
+            for (var i in sections) {
                 if ((pos + settings.scrollToOffset >= sections[i]) && sections[i] < pos + page_height){
                     selectedNav = i;
                 }
@@ -67,7 +67,7 @@ $.extend($.easing,
     }
 
     function activateNav(navID) {
-        for (nav in navs) { $(navs[nav]).removeClass('active'); }
+        for (var nav in navs) { $(navs[nav]).removeClass('active'); }
         $(navs[navID]).addClass('active');
         history.replaceState(null, null, '#' + navID);
 
@@ -90,30 +90,33 @@ $(document).ready(function (){
             $(this).on('click', function(event) {
                 event.preventDefault();
                 var target = $(event.target).closest("a");
-                var targetHight =  $(target.attr("href")).offset().top
-                $('html,body').animate({scrollTop: targetHight - 170}, 800, "easeInOutExpo");
+                var targetHeight =  $(target.attr("href")).offset().top;
+                $('html,body').animate({scrollTop: targetHeight - 170}, 800, "easeInOutExpo");
             });
         }
     });
 
     // Countdown to November 8th @ 9:30AM PT 2025
+    var twitchEmbedded = false;
     $('div#countdown').countdown(1762623000000, {elapse: true})
         .on('update.countdown', function (event) {
             if (event.elapsed) {
                 if (event.offset.totalHours < 36) {
-                    new Twitch.Embed("twitch-embed", {
-                        channel: "stjohnjohnson",
-                        layout: "video"
-                    });
-
+                    if (!twitchEmbedded) {
+                        new Twitch.Embed("twitch-embed", {
+                            channel: "stjohnjohnson",
+                            layout: "video"
+                        });
+                        twitchEmbedded = true;
+                    }
                     $(".twitch-window").show();
                 } else {
                     $(this).html('');
                     $(".twitch-window").hide();
                 }
-              } else {
+            } else {
                 $(this).html(event.strftime('<h4 class="text-white">Starting in %-D day%!D %-H hour%!H %-M minute%!M %-S second%!S</h4>'));
-              }
+            }
         });
 
     // load donation bar
