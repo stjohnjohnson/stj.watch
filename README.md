@@ -7,10 +7,19 @@
 ## Local Development
 
 ```
-$ bundle update
-$ bundle install
-$ bundle exec jekyll serve
-$ open http://0.0.0.0:4000/
+brew install chruby ruby-install
+ruby-install ruby 3.3.5
+echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
+echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
+echo "chruby ruby-3.3.5" >> ~/.zshrc # run 'chruby' to see actual version
+gem install bundler
+```
+
+```
+bundle update
+bundle install
+bundle exec jekyll serve
+open http://0.0.0.0:4000/
 ```
 
 ## Sources
