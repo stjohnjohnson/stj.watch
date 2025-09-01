@@ -96,9 +96,9 @@ $(document).ready(function (){
         }
     });
 
-    // Countdown to November 8th @ 9:30AM PT 2025
     var twitchEmbedded = false;
-    $('div#countdown').countdown(1762623000000, {elapse: true})
+    // Countdown to November 1st @ 9:30AM PT 2025
+    $('div#countdown').countdown(1762014600000, {elapse: true})
         .on('update.countdown', function (event) {
             if (event.elapsed) {
                 if (event.offset.totalHours < 36) {
