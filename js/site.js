@@ -97,8 +97,8 @@ $(document).ready(function (){
     });
 
     var twitchEmbedded = false;
-    // Countdown to November 1st @ 9:30AM PT 2025
-    $('div#countdown').countdown(1762014600000, {elapse: true})
+    // Countdown to November 7th @ 8:30AM PT 2026
+    $('div#countdown').countdown(1794069000000, {elapse: true})
         .on('update.countdown', function (event) {
             if (event.elapsed) {
                 if (event.offset.totalHours < 36) {
@@ -120,6 +120,6 @@ $(document).ready(function (){
         });
 
     // load donation bar
-    $('div#donation-bar').donateGoal(548692);
-    $('div#raised-top').currentRaised(548692);
+    $('div#donation-bar').donateGoal(565756);
+    $('div#raised-top').currentRaised(565756);
 });

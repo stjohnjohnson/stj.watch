@@ -13,7 +13,7 @@ lsi: false
 markdown: kramdown
 
 ### target values
-goal: $20,000
+goal: $25,000
 
 ### content configuration ###
 title:       "St. John's 24-hour Charity Stream Event (11/1/25)"
