@@ -1,6 +1,7 @@
 
 (function ($) {
 
+    const participantApiBase = 'https://dd.extra-life.org/api/participants/';
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
@@ -21,7 +22,7 @@
 
         function getLatestData() {
             $.ajax({
-                url: 'https://www.extra-life.org/api/participants/' + participantID,
+                url: participantApiBase + participantID,
                 type: 'GET',
                 data: '',
                 dataType: 'json',
@@ -52,7 +53,7 @@
 
         function getLatestData() {
             $.ajax({
-                url: 'https://www.extra-life.org/api/participants/' + participantID,
+                url: participantApiBase + participantID,
                 type: 'GET',
                 data: '',
                 dataType: 'json',
