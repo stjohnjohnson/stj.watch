@@ -1,4 +1,4 @@
-# St. John's 24-Hour Charity Stream Event Page
+# St. John's 25-Hour Charity Stream Event Page
 
 ## Colors
 
