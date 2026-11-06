@@ -1,8 +1,4 @@
-{% if page.extra_life_donation %}
-{% capture target %}https://www.extra-life.org/index.cfm?fuseaction=donordrive.participant&participantID={{ site.extra_life_participant_id }}#donate{% endcapture %}
-{% else %}
-{% assign target = page.target %}
-{% endif %}
+{% assign target = page.target | default: content | strip %}
 <!DOCTYPE html>
 <html>
 

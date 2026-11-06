@@ -6,7 +6,9 @@
 
 ## Annual participant update
 
-Set `extra_life_participant_id` in `_config.yml` to the new campaign's participant ID. The fundraising totals, donation redirect, and footer fundraising link all use this setting. Restart the local Jekyll server after changing configuration.
+Set `extra_life_participant_id` in `_config.yml` to the new campaign's participant ID. The fundraising totals and the `/donate` and `/extralife` redirects all use this setting. The footer links to `/extralife`, and `/extra-life` is an alias for it. Restart the local Jekyll server after changing configuration.
+
+Redirect destinations live in `_redirect/`. Fixed destinations use `target` in front matter; destinations that need Liquid variables use an `.html` file with the URL as its body. The shared redirect layout accepts either form.
 
 ## Local Development
 
