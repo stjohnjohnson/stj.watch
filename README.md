@@ -4,6 +4,10 @@
 
 ```#1AC1DD```
 
+## Annual participant update
+
+Set `extra_life_participant_id` in `_config.yml` to the new campaign's participant ID. The fundraising totals, donation redirect, and footer fundraising link all use this setting. Restart the local Jekyll server after changing configuration.
+
 ## Local Development
 
 ```
