@@ -120,6 +120,7 @@ $(document).ready(function (){
         });
 
     // load donation bar
-    $('div#donation-bar').donateGoal(565756);
-    $('div#raised-top').currentRaised(565756);
+    var participantID = $('#main').data('extra-life-participant-id');
+    $('div#donation-bar').donateGoal(participantID);
+    $('div#raised-top').currentRaised(participantID);
 });

@@ -1,11 +1,12 @@
+{% assign target = page.target | default: content | strip %}
 <!DOCTYPE html>
 <html>
 
 <body>
     <script type="application/javascript">
-        window.location.replace("{{ page.target }}");
+        window.location.replace({{ target | jsonify }});
     </script>
-    <p>Redirecting to <a href="{{ page.target }}">{{ page.target }}</a>...</p>
+    <p>Redirecting to <a href="{{ target | escape }}">{{ target | escape }}</a>...</p>
 </body>
 
 </html>

@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 </head>
 <body>
-  <div id="main">
+  <div id="main" data-extra-life-participant-id="{{ site.extra_life_participant_id }}">
 
     <nav><ul>
       {% for node in site.posts reversed %}
@@ -53,6 +53,17 @@
       </div>
     {% endfor %}
 
+
+    <aside id="quick-links" class="text-white" aria-label="Ways to participate">
+      <div class="container center">
+        <div class="quick-links-buttons">
+          <a href="https://stream.stj.watch"><i class="fab fa-twitch" aria-hidden="true"></i>Watch on Twitch</a>
+          <a href="https://discord.stj.watch"><i class="fab fa-discord" aria-hidden="true"></i>Join Discord</a>
+          <a href="https://games.stj.watch"><i class="fas fa-gamepad" aria-hidden="true"></i>Browse games</a>
+          <a href="https://stj.watch/extralife"><i class="fas fa-hands-helping" aria-hidden="true"></i>Visit Extra Life</a>
+        </div>
+      </div>
+    </aside>
 
     <div id="footer" class="section text-white">
       <div class="container">

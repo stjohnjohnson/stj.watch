@@ -14,6 +14,7 @@ markdown: kramdown
 
 ### target values
 goal: $25,000
+extra_life_participant_id: 565756
 
 ### content configuration ###
 title:       "St. John's 25-hour Charity Stream Event (11/7/26)"
