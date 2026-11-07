@@ -1,0 +1,10 @@
+current_year: 2026
+goal: 25000
+# Final annual totals, including finalized matching. Public aggregates only.
+history:
+  - { year: 2020, amount: 4752, label: "$4,752" }
+  - { year: 2021, amount: 7116, label: "$7,116" }
+  - { year: 2022, amount: 9660, label: "$9,660" }
+  - { year: 2023, amount: 16336, label: "$16,336" }
+  - { year: 2024, amount: 21841, label: "$21,841" }
+  - { year: 2025, amount: 28783, label: "$28,783" }

@@ -1,0 +1,46 @@
+(function (root) {
+    'use strict';
+
+    function calculate(history, current, goal) {
+        if (typeof current !== 'number' || !Number.isFinite(current) || current < 0) return null;
+        const amounts = history.concat(current);
+        const scale = Math.ceil(Math.max(goal, ...amounts) / 5000) * 5000;
+        return {
+            lifetime: amounts.reduce((sum, amount) => sum + amount, 0),
+            scale: scale,
+            heights: amounts.map(amount => amount / scale * 100),
+            goalHeight: goal / scale * 100
+        };
+    }
+
+    function update(response) {
+        const section = root.document.getElementById('fundraising-impact');
+        if (!section) return;
+        const bars = Array.from(section.querySelectorAll('.bar'));
+        const history = bars.slice(0, -1).map(bar => Number(bar.dataset.amount));
+        const current = response.sumDonations;
+        const result = calculate(history, current, Number(section.dataset.goal));
+        if (!result) return;
+        const currency = new Intl.NumberFormat('en-US', {
+            style: 'currency', currency: 'USD', maximumFractionDigits: 2
+        });
+        const money = amount => currency.format(amount).replace(/\.00$/, '');
+        section.querySelector('.lifetime-total').textContent = money(result.lifetime);
+        section.querySelector('.lifetime-context').textContent = 'for children and families since 2020';
+        bars.forEach((bar, index) => {
+            const amount = index === bars.length - 1 ? current : history[index];
+            bar.style.height = result.heights[index] + '%';
+            bar.querySelector('.amount').textContent = money(amount);
+            bar.querySelector('.amount').dataset.compact = '$' + (amount / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+            bar.setAttribute('aria-label', bar.dataset.year + ': ' + money(amount) +
+                (index === bars.length - 1 ? ', ongoing; goal $25,000' : ''));
+        });
+        section.querySelector('.goal-marker').style.bottom = result.goalHeight + '%';
+        // Keep the goal caption clear of the amount when this year's bar reaches it.
+        section.querySelector('.goal-marker span').style.bottom =
+            Math.abs(current - Number(section.dataset.goal)) / result.scale < 0.15 ? '32px' : '6px';
+    }
+
+    if (typeof module !== 'undefined' && module.exports) module.exports = { calculate, update };
+    else root.ExtraLifeFundraising = { calculate, update };
+})(typeof window !== 'undefined' ? window : globalThis);

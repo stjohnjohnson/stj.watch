@@ -64,6 +64,7 @@
                     donationPercent = Math.round(donationValue / donationGoal * 100);
 
                     displayText.text(formatter.format(donationValue) + " (" + donationPercent + "%) raised so far");
+                    window.ExtraLifeFundraising.update(res);
                 },
                 error: function (res) {
                     console.error(res);
