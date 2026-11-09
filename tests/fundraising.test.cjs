@@ -1,6 +1,6 @@
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
-const {calculate} = require('../js/fundraising.js');
+const {calculate, update} = require('../js/fundraising.js');
 const history = [4752, 7116, 9660, 16336, 21841, 28783];
 test('adds the live total once to finalized prior years', () => {
     assert.equal(typeof calculate, 'function', 'fundraising calculation is available');
@@ -9,6 +9,40 @@ test('adds the live total once to finalized prior years', () => {
     assert.equal(result.scale, 30000);
     assert.equal(result.heights[6], 50);
     assert.equal(result.goalHeight, 25000 / 30000 * 100);
+});
+
+function renderDonation(amount, t) {
+    const previousDocument = global.document;
+    t.after(() => { global.document = previousDocument; });
+    const node = () => ({style: {}, dataset: {}, textContent: '', classList: {toggle() {}}});
+    const elements = Object.fromEntries(['.lifetime-total', '.lifetime-context', '.ongoing', '.goal-marker', '.goal-marker span'].map(selector => [selector, node()]));
+    const bars = history.concat(0).map((amount, index) => {
+        const label = node();
+        return {style: {}, dataset: {amount, year: 2020 + index},
+            querySelector: () => label, setAttribute() {}};
+    });
+    global.document = {getElementById: () => ({dataset: {goal: 25000},
+        querySelector: selector => elements[selector], querySelectorAll: () => bars})};
+    update({sumDonations: amount});
+    return {elements, bars};
+}
+
+test('rounds visible amounts while preserving cents in bar proportions and totals', t => {
+    const {elements, bars} = renderDonation(26753.95, t);
+    assert.equal(elements['.lifetime-total'].textContent, '$115,242');
+    assert.equal(bars[6].querySelector('.amount').textContent, '$26,754');
+    assert.equal(bars[6].style.height, (26753.95 / 30000 * 100) + '%');
+    assert.equal(calculate(history, 26753.95, 25000).lifetime, 115241.95);
+});
+
+test('acknowledges the goal beneath the year when the actual amount reaches it', t => {
+    const {elements} = renderDonation(25000, t);
+    assert.equal(elements['.ongoing'].textContent, '$25k goal reached ✓');
+});
+
+test('does not claim the goal from rounding up a below-goal amount', t => {
+    const {elements} = renderDonation(24999.95, t);
+    assert.equal(elements['.ongoing'].textContent, 'ongoing');
 });
 test('zero current donations preserves the historical total', () => {
     assert.equal(calculate(history, 0, 25000).lifetime, 88488);

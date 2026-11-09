@@ -22,9 +22,14 @@
         const result = calculate(history, current, Number(section.dataset.goal));
         if (!result) return;
         const currency = new Intl.NumberFormat('en-US', {
-            style: 'currency', currency: 'USD', maximumFractionDigits: 2
+            style: 'currency', currency: 'USD', maximumFractionDigits: 0
         });
-        const money = amount => currency.format(amount).replace(/\.00$/, '');
+        const money = amount => currency.format(amount);
+        const reachedGoal = current >= Number(section.dataset.goal);
+        const goalLabel = '$' + Number(section.dataset.goal) / 1000 + 'k';
+        const status = section.querySelector('.ongoing');
+        status.textContent = reachedGoal ? goalLabel + ' goal reached ✓' : 'ongoing';
+        status.classList.toggle('goal-reached', reachedGoal);
         section.querySelector('.lifetime-total').textContent = money(result.lifetime);
         section.querySelector('.lifetime-context').textContent = 'for children and families since 2020';
         bars.forEach((bar, index) => {
@@ -33,12 +38,9 @@
             bar.querySelector('.amount').textContent = money(amount);
             bar.querySelector('.amount').dataset.compact = '$' + (amount / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
             bar.setAttribute('aria-label', bar.dataset.year + ': ' + money(amount) +
-                (index === bars.length - 1 ? ', ongoing; goal $25,000' : ''));
+                (index === bars.length - 1 ? ', ' + status.textContent + '; goal ' + money(Number(section.dataset.goal)) : ''));
         });
         section.querySelector('.goal-marker').style.bottom = result.goalHeight + '%';
-        // Keep the goal caption clear of the amount when this year's bar reaches it.
-        section.querySelector('.goal-marker span').style.bottom =
-            Math.abs(current - Number(section.dataset.goal)) / result.scale < 0.15 ? '32px' : '6px';
     }
 
     if (typeof module !== 'undefined' && module.exports) module.exports = { calculate, update };

@@ -420,10 +420,8 @@
     pointer-events: none;
 }
 
-.fundraising-chart .goal-marker span {
-    position: absolute;
-    bottom: 6px;
-    right: 0;
+.fundraising-chart .ongoing.goal-reached {
+    width: max-content;
     font-size: 11px;
     white-space: nowrap;
 }
@@ -442,5 +440,9 @@
         font-size: 11px;
     }
     .fundraising-chart .year { font-size: 12px; }
-    .fundraising-chart .goal-marker span { font-size: 10px; }
+    .fundraising-chart .ongoing.goal-reached {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
 }
