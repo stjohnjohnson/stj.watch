@@ -13,7 +13,22 @@
         };
     }
 
+    function updateRecapTotals(response, participantID) {
+        const current = response.sumDonations;
+        if (!participantID || typeof current !== 'number' || !Number.isFinite(current) || current < 0) return;
+        const money = new Intl.NumberFormat('en-US', {
+            style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 2
+        }).format(current);
+        root.document.querySelectorAll('[data-campaign-total]').forEach(node => {
+            if (String(node.dataset.participantId) !== String(participantID)) return;
+            node.querySelector('[data-raised-amount]').textContent = money;
+            node.hidden = false;
+        });
+    }
+
     function update(response) {
+        const main = root.document.getElementById('main');
+        if (main) updateRecapTotals(response, main.dataset.extraLifeParticipantId);
         const section = root.document.getElementById('fundraising-impact');
         if (!section) return;
         const bars = Array.from(section.querySelectorAll('.bar'));
@@ -43,6 +58,6 @@
         section.querySelector('.goal-marker').style.bottom = result.goalHeight + '%';
     }
 
-    if (typeof module !== 'undefined' && module.exports) module.exports = { calculate, update };
-    else root.ExtraLifeFundraising = { calculate, update };
+    if (typeof module !== 'undefined' && module.exports) module.exports = { calculate, update, updateRecapTotals };
+    else root.ExtraLifeFundraising = { calculate, update, updateRecapTotals };
 })(typeof window !== 'undefined' ? window : globalThis);

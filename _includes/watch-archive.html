@@ -1,0 +1,45 @@
+<div id="watch-archive">
+  <h2>Good games. Great company.<br>Incredible generosity.</h2>
+  <p class="watch-intro">Revisit some highlights from our previous events</p>
+  <div class="watch-year-controls" aria-label="Choose a stream year" hidden>
+    {% for stream in site.data.streams %}
+    <button type="button" data-year-select="{{ stream.year }}" aria-pressed="false">{{ stream.year }}</button>
+    {% endfor %}
+  </div>
+  <div class="watch-media">
+    <div class="watch-posters">
+      {% for stream in site.data.streams %}{% if stream.recap %}
+      <figure data-poster-year="{{ stream.year }}">
+        <img data-recap-poster src="{{ stream.recap.image | relative_url }}" alt="{{ stream.recap.alt | escape }}" width="1122" height="1402" loading="lazy">
+      </figure>
+      {% endif %}{% endfor %}
+    </div>
+    <div class="watch-playback">
+      <div class="watch-player-area" hidden>
+        <h3 id="watch-clip-title" aria-live="polite"></h3>
+        <div class="watch-player-frame">
+          <iframe id="watch-player" title="Charity stream highlight" width="640" height="360" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+      <noscript><p>Choose a highlight below to watch on Twitch.</p></noscript>
+      {% for stream in site.data.streams %}
+      <article data-year="{{ stream.year }}" id="watch-year-{{ stream.year }}">
+        {% assign annual_result = site.data.fundraising.history | where: 'year', stream.year | first %}
+        {% assign active_participant = site.extra_life_participant_id | append: '' %}
+        {% assign recap_participant = stream.participant_id | append: '' %}
+        {% if annual_result %}
+        <p class="watch-year-total"><strong>{{ annual_result.label }}</strong> raised for children and families</p>
+        {% elsif stream.participant_id and recap_participant == active_participant %}
+        <p class="watch-year-total" data-campaign-total data-participant-id="{{ stream.participant_id }}" hidden><strong data-raised-amount></strong> raised so far for children and families</p>
+        {% endif %}
+        {% if stream.vod %}<p class="watch-vod"><a href="{{ stream.vod | escape }}" target="_blank" rel="noopener">Watch the full {{ stream.year }} stream on Twitch ↗</a></p>{% endif %}
+        <ol class="watch-clips">
+          {% for clip in stream.clips %}
+          <li><a href="{{ clip.url | escape }}" data-clip-id="{{ clip.id | escape }}" target="_blank" rel="noopener"><span class="watch-clip-number">{{ forloop.index | prepend: '0' }}</span><span class="watch-clip-label">{{ clip.title | escape }}</span><span class="watch-clip-play" aria-hidden="true">▶</span></a></li>
+          {% endfor %}
+        </ol>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>

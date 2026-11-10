@@ -1,0 +1,16 @@
+{% assign active_participant = site.extra_life_participant_id | append: '' %}
+{% for stream in site.data.streams %}
+{% assign recap_participant = stream.participant_id | append: '' %}
+{% if stream.participant_id and stream.recap and stream.games and recap_participant == active_participant %}
+<aside id="featured-recap" aria-labelledby="featured-recap-title">
+  <p class="watch-eyebrow">{{ stream.year }} charity stream</p>
+  <h3 id="featured-recap-title">Thank you for joining me this year!</h3>
+  <p class="featured-recap-total" data-campaign-total data-participant-id="{{ stream.participant_id }}" hidden>
+    <strong data-raised-amount></strong>
+    <span>raised so far for UCSF Benioff Children's Hospitals</span>
+  </p>
+  <p class="featured-recap-transition">Here’s how we spent those {{ stream.duration_hours }} hours together.</p>
+  {% include featured-games.html stream=stream %}
+  <a class="watch-feature-link" href="#watch">View highlights from {{ stream.year }} <span aria-hidden="true">↓</span></a>
+</aside>
+{% endif %}{% endfor %}

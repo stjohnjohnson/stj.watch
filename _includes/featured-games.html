@@ -1,0 +1,35 @@
+{% assign game_minutes = 0 %}
+{% for game in include.stream.games %}{% assign game_minutes = game_minutes | plus: game.minutes %}{% endfor %}
+{% assign largest_ranked_game = include.stream.games[2].minutes %}
+<section id="featured-games" aria-label="Games played, hours and share of game time">
+  <div class="recap-game-cards">
+    {% for game in include.stream.games limit:2 %}
+    {% assign share = game.minutes | times: 100.0 | divided_by: game_minutes | round: 1 %}
+    <div class="recap-game-card recap-game-card-{{ forloop.index }}" data-game-name="{{ game.name | escape }}" data-percent="{{ share }}">
+      <div class="recap-game-art" aria-hidden="true">
+        <img class="recap-game-art-source" src="{{ game.image | relative_url }}" alt="" loading="lazy">
+      </div>
+      <div class="recap-game-card-copy">
+        <h4>{{ game.name | escape }}</h4>
+        <div class="recap-game-card-stats">
+          <span class="recap-game-duration">{{ game.minutes | divided_by: 60.0 | round: 2 }} h</span>
+          <span class="recap-game-share">{{ share }}%</span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <ol class="recap-game-list" start="3">
+    {% for game in include.stream.games offset:2 %}
+    {% assign share = game.minutes | times: 100.0 | divided_by: game_minutes | round: 1 %}
+    {% assign bar_width = game.minutes | times: 100.0 | divided_by: largest_ranked_game | round: 2 %}
+    <li class="recap-game-row" data-game-name="{{ game.name | escape }}" data-percent="{{ share }}">
+      <span class="recap-game-rank" aria-hidden="true">{{ forloop.index | plus: 2 }}</span>
+      <span class="recap-game-name">{{ game.name | escape }}</span>
+      <span class="recap-game-track" aria-hidden="true"><span class="recap-game-bar" style="width: {{ bar_width }}%"></span></span>
+      <span class="recap-game-duration">{% if game.minutes < 60 %}{{ game.minutes | round }} min{% else %}{{ game.minutes | divided_by: 60.0 | round: 2 }} h{% endif %}</span>
+      <span class="recap-game-share">{{ share }}%</span>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
