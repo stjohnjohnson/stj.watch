@@ -1,6 +1,6 @@
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
-const {calculate, update} = require('../js/fundraising.js');
+const {calculate, update, updateRecapTotals} = require('../js/fundraising.js');
 const history = [4752, 7116, 9660, 16336, 21841, 28783];
 test('adds the live total once to finalized prior years', () => {
     assert.equal(typeof calculate, 'function', 'fundraising calculation is available');
@@ -60,4 +60,45 @@ test('rejects missing, negative, nonnumeric and nonfinite current totals', () =>
     for (const amount of [undefined, null, '', '15000', NaN, Infinity, -1]) {
         assert.equal(calculate(history, amount, 25000), null);
     }
+});
+
+function recapTotalsDocument(t) {
+    const previousDocument = global.document;
+    t.after(() => { global.document = previousDocument; });
+    const totals = ['565756', '565756', 'old-campaign'].map(id => ({
+        dataset: {participantId: id}, hidden: true,
+        amount: {textContent: ''}, querySelector() { return this.amount; }
+    }));
+    global.document = {
+        getElementById: id => id === 'main' ? {dataset: {extraLifeParticipantId: '565756'}} : null,
+        querySelectorAll: () => totals
+    };
+    return totals;
+}
+
+test('live recap amounts preserve cents and never overwrite another campaign', t => {
+    const totals = recapTotalsDocument(t);
+    assert.equal(typeof updateRecapTotals, 'function');
+    updateRecapTotals({sumDonations: 26753.95}, '565756');
+    assert.equal(totals[0].amount.textContent, '$26,753.95');
+    assert.equal(totals[1].amount.textContent, '$26,753.95');
+    assert.equal(totals[0].hidden, false);
+    assert.equal(totals[2].hidden, true);
+    assert.equal(totals[2].amount.textContent, '');
+});
+
+test('missing or invalid totals stay hidden rather than suggesting zero raised', t => {
+    const totals = recapTotalsDocument(t);
+    assert.equal(typeof updateRecapTotals, 'function');
+    for (const value of [undefined, null, '', '100', NaN, Infinity, -1]) {
+        updateRecapTotals({sumDonations: value}, '565756');
+    }
+    assert.ok(totals.every(node => node.hidden && node.amount.textContent === ''));
+});
+
+test('recap total updates independently of the lifetime chart', t => {
+    const totals = recapTotalsDocument(t);
+    update({sumDonations: 25000});
+    assert.equal(totals[0].amount.textContent, '$25,000');
+    assert.equal(totals[0].hidden, false);
 });

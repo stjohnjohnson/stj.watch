@@ -6,7 +6,7 @@ safe: false
 
 
 ### site serving configuration ###
-exclude: [CNAME, README.md, .gitignore, tests]
+exclude: [CNAME, README.md, .gitignore, tests, docs]
 permalink: /empty ## disables post output
 timezone: null
 lsi: false
@@ -34,6 +34,7 @@ colors:
   violet:    '#5D449E'
   orange:    '#bc740f'
   turquoise: '#0fbfcf'
+  navy:      '#101C30'
 
 kramdown:
   auto_ids:  false
