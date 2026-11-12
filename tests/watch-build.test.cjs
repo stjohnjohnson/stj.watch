@@ -11,12 +11,16 @@ test('watch navigation is between when and donate', () => {
         ['what', 'who', 'why', 'when', 'watch', 'donate']);
 });
 
-test('all seven years retain the user-selected clips without duplicate players', () => {
+test('all seven years retain the selected highlights without duplicate players', () => {
     const years = [...html.matchAll(/<article[^>]*data-year="(\d+)"[\s\S]*?<\/article>/g)];
-    assert.deepEqual(years.map(m => [Number(m[1]), [...m[0].matchAll(/data-clip-id=/g)].length]),
-        [[2026,7],[2025,3],[2024,2],[2023,2],[2022,2],[2021,3],[2020,3]]);
+    assert.deepEqual(years.map(m => [Number(m[1]), [...m[0].matchAll(/data-(?:clip|video)-id=/g)].length]),
+        [[2026,7],[2025,3],[2024,2],[2023,2],[2022,5],[2021,3],[2020,3]]);
     assert.equal((html.match(/id="watch-player"/g) || []).length, 1);
-    assert.ok(html.includes('EagerOptimisticPlumberDerp-Mv7UHLkKcUVF-_FX'));
+    assert.ok(!html.includes('EagerOptimisticPlumberDerp-Mv7UHLkKcUVF-_FX'));
+    const year2022 = years.find(m => m[1] === '2022')[0];
+    assert.deepEqual([...year2022.matchAll(/data-video-id="([^"]+)"/g)].map(m => m[1]),
+        ['1650415772', '1650415773', '1650415774', '1650415775']);
+    assert.match(year2022, /data-video-id="1650415775"[^>]*>[\s\S]*?Ending speech/);
 });
 
 test('poster previews exist only for 2026 and 2025 and their files are available', () => {

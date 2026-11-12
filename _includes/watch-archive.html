@@ -35,7 +35,7 @@
         {% if stream.vod %}<p class="watch-vod"><a href="{{ stream.vod | escape }}" target="_blank" rel="noopener">Watch the full {{ stream.year }} stream on Twitch ↗</a></p>{% endif %}
         <ol class="watch-clips">
           {% for clip in stream.clips %}
-          <li><a href="{{ clip.url | escape }}" data-clip-id="{{ clip.id | escape }}" target="_blank" rel="noopener"><span class="watch-clip-number">{{ forloop.index | prepend: '0' }}</span><span class="watch-clip-label">{{ clip.title | escape }}</span><span class="watch-clip-play" aria-hidden="true">▶</span></a></li>
+          <li><a href="{{ clip.url | escape }}" {% if clip.type == "video" %}data-video-id{% else %}data-clip-id{% endif %}="{{ clip.id | escape }}" target="_blank" rel="noopener"><span class="watch-clip-number">{{ forloop.index | prepend: '0' }}</span><span class="watch-clip-label">{{ clip.title | escape }}</span><span class="watch-clip-play" aria-hidden="true">▶</span></a></li>
           {% endfor %}
         </ol>
       </article>
