@@ -7,12 +7,18 @@
         return 'https://clips.twitch.tv/embed?' + params.toString();
     }
 
+    function buildVideoURL(videoID, hostname) {
+        if (!/^[0-9]+$/.test(videoID)) throw new Error('Invalid Twitch video ID');
+        var params = new URLSearchParams({video: 'v' + videoID, parent: hostname, autoplay: 'false'});
+        return 'https://player.twitch.tv/?' + params.toString();
+    }
+
     function initializeWatch(root, hostname) {
         if (!root || root.dataset.watchReady) return;
         var panels = Array.from(root.querySelectorAll('[data-year]'));
         var buttons = Array.from(root.querySelectorAll('[data-year-select]'));
         var posters = Array.from(root.querySelectorAll('[data-poster-year]'));
-        var links = Array.from(root.querySelectorAll('[data-clip-id]'));
+        var links = Array.from(root.querySelectorAll('[data-clip-id], [data-video-id]'));
         var player = root.querySelector('#watch-player');
         var playback = root.querySelector('.watch-playback');
         var selectedURL;
@@ -33,8 +39,8 @@
             link.setAttribute('aria-current', 'true');
             var title = link.querySelector('.watch-clip-label').textContent;
             root.querySelector('#watch-clip-title').textContent = title;
-            player.title = title + ' — Twitch clip';
-            selectedURL = buildClipURL(link.dataset.clipId, hostname);
+            player.title = title + ' — Twitch ' + (link.dataset.videoId ? 'video' : 'clip');
+            selectedURL = link.dataset.videoId ? buildVideoURL(link.dataset.videoId, hostname) : buildClipURL(link.dataset.clipId, hostname);
             syncPlayer();
         }
 
@@ -52,7 +58,7 @@
             });
             root.querySelector('.watch-posters').hidden = !hasRecap;
             root.classList.toggle('watch-has-recap', hasRecap);
-            selectClip(selected.querySelector('[data-clip-id]'));
+            selectClip(selected.querySelector('[data-clip-id], [data-video-id]'));
         }
 
         buttons.forEach(function (button) {
@@ -77,7 +83,7 @@
     }
 
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = {buildClipURL: buildClipURL, initializeWatch: initializeWatch};
+        module.exports = {buildClipURL: buildClipURL, buildVideoURL: buildVideoURL, initializeWatch: initializeWatch};
     }
     if (typeof document !== 'undefined') {
         var start = function () { initializeWatch(document.getElementById('watch-archive'), window.location.hostname); };

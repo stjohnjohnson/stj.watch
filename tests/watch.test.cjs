@@ -33,3 +33,17 @@ test('pages without an archive do not fail initialization', () => {
     assert.equal(typeof watch.initializeWatch, 'function');
     assert.doesNotThrow(() => watch.initializeWatch(null, 'stj.watch'));
 });
+
+test('embeds Twitch videos with their video ID instead of the clips endpoint', () => {
+    assert.equal(typeof watch.buildVideoURL, 'function');
+    for (const host of ['stj.watch', '127.0.0.1']) {
+        const url = new URL(watch.buildVideoURL('1650415772', host));
+        assert.equal(url.origin + url.pathname, 'https://player.twitch.tv/');
+        assert.equal(url.searchParams.get('video'), 'v1650415772');
+        assert.equal(url.searchParams.get('parent'), host);
+        assert.equal(url.searchParams.get('autoplay'), 'false');
+        assert.ok(!url.searchParams.has('clip'));
+    }
+    assert.throws(() => watch.buildVideoURL('1650415772&autoplay=true', 'stj.watch'));
+    assert.throws(() => watch.buildVideoURL('', 'stj.watch'));
+});

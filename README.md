@@ -38,7 +38,7 @@ open http://0.0.0.0:4000/
 
 ## Stream recaps and highlights
 
-The **watch** section lives in `_posts/2000-01-05-watch.html`. Add years and clips to `_data/streams.yml`, newest first. Each clip needs its Twitch slug, display title, and public URL. The supplied year groups and explicitly requested display titles are authoritative; avoid guessing dates from Twitch's relative ages.
+The **watch** section lives in `_posts/2000-01-05-watch.html`. Add years and clips to `_data/streams.yml`, newest first. Each clip needs its Twitch slug, display title, and public URL. For Twitch video highlights, set `type: video` and use the numeric video ID; videos and clips share the same player and yearly list. The supplied year groups and explicitly requested display titles are authoritative; avoid guessing dates from Twitch's relative ages.
 
 Recap posters are optional. Store them under `img/recaps/` and set the year's `recap.image` and descriptive `recap.alt`. The Watch archive displays posters without full-size links. The homepage thank-you summary renders the game breakdown as responsive HTML: two illustrated cards followed by ranked bars. Add `duration_hours` and an ordered `games` list with each game’s `name` and unrounded `minutes` to the matching stream entry. Percentages are calculated from game time only; durations below one hour display as minutes. The two featured games each have an `image` path to standalone, text-free artwork. Use landscape images with a 2:1 aspect ratio; labels and statistics are rendered below them as HTML. Original poster files remain intact. Keep image sources and verified data with the original Extra Life campaign materials.
 
